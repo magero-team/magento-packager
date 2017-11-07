@@ -26,11 +26,11 @@ class GenerateCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setDescription('Generate package properties file');
+        $this->setDescription('Generate package config file');
         $this->addArgument(
             self::ARGUMENT_DIRECTORY,
             Console\Input\InputArgument::OPTIONAL,
-            'Directory package properties file will be generated where',
+            'Directory package config file will be generated where',
             getcwd()
         );
     }
@@ -45,9 +45,9 @@ class GenerateCommand extends AbstractCommand
             throw new Console\Exception\InvalidArgumentException('Invalid target directory');
         }
         $directory = realpath($directory);
-        $propertiesFile = $directory . DIRECTORY_SEPARATOR . 'properties.yml';
+        $configFile = $directory . DIRECTORY_SEPARATOR . 'package.yml';
 
-        $propertiesStub = <<<END
+        $configStub = <<<END
 name: Module_Module
 version: 0.0.1
 stability: stable
@@ -63,8 +63,8 @@ php_max_version: 5.6.100
 required_packages:
     - { name: Package_Name, channel: channel, min: ~, max: ~ }
 END;
-        file_put_contents($propertiesFile, $propertiesStub);
+        file_put_contents($configFile, $configStub);
 
-        $output->writeln('Package properties file created successfully: ' . $propertiesFile);
+        $output->writeln('Package config file created successfully: ' . $configFile);
     }
 }
