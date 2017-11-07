@@ -1,0 +1,24 @@
+{
+    "name": "magero/magento-packager",
+    "description": "Packager of Magento extensions",
+    "keywords": ["Magento", "package"],
+    "license": "MIT",
+    "type": "magento-develop-tool",
+    "require": {
+        "symfony/console": "^3.1",
+        "symfony/finder": "^3.1",
+        "symfony/yaml": "^3.1"
+    },
+    "authors": [
+        {
+            "name": "VVeb Developer",
+            "email": "developer@vveb.pro"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Magero\\Packager\\": "src/Packager/"
+        }
+    },
+    "bin": ["bin/packager"]
+}
